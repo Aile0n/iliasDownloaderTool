@@ -18,7 +18,7 @@ public class IliasManager {
 		HashMap<String, IliasPlugin> map = new HashMap<>();
 		map.put("kn", new KNIlias());
 		map.put("kit", new KITIlias());
-		map.put("demo", new DemoIlias());
+		map.put("UHOH", new UHOHIlias());
 		map.put("hsf", new HSFIlias());
 		map.put("tueb", new TuebIlias());
 		map.put("wbs", new WBSIlias());
