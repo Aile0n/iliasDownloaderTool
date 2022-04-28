@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public class DemoIlias extends IliasPlugin {
+public class UHOHIlias extends IliasPlugin {
 
     private HttpPost post;
     private HttpResponse response;
@@ -34,7 +34,7 @@ public class DemoIlias extends IliasPlugin {
         nvps = new ArrayList<>();
 
         try {
-            post = new HttpPost("https://demo.ilias.de/login.php");
+            post = new HttpPost("https://ilias.uni-hohenheim.de/login.php");
 
             executePost();
 
@@ -48,7 +48,7 @@ public class DemoIlias extends IliasPlugin {
             Document doc = Jsoup.parse(html);
             Element form = doc.select("form[name=formlogin").first();
 
-            post = new HttpPost("https://demo.ilias.de/" + form.attr("action"));
+            post = new HttpPost("https://ilias.uni-hohenheim.de/" + form.attr("action"));
             nvps.add(new BasicNameValuePair("username", username));
             nvps.add(new BasicNameValuePair("password", password));
             nvps.add(new BasicNameValuePair("cmd[doStandardAuthentication]", "Anmelden"));
@@ -56,7 +56,7 @@ public class DemoIlias extends IliasPlugin {
 
             executePost();
 
-            post = new HttpPost("https://demo.ilias.de/ilias.php?baseClass=ilPersonalDesktopGUI&cmd=jumpToSelectedItems");
+            post = new HttpPost("https://ilias.uni-hohenheim.de/ilias.php?baseClass=ilDashboardGUI&cmd=jumpToSelectedItems");
 
             executePost();
 
@@ -96,7 +96,7 @@ public class DemoIlias extends IliasPlugin {
 
     @Override
     public String getBaseUri() {
-        return "https://demo.ilias.de";
+        return "https://ilias.uni-hohenheim.de";
     }
 
     @Override
@@ -106,7 +106,7 @@ public class DemoIlias extends IliasPlugin {
 
     @Override
     public String getShortName() {
-        return "DEMO";
+        return "UHOH";
     }
 
 }
